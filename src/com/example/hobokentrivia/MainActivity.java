@@ -41,6 +41,18 @@ public class MainActivity extends Activity {
 			    finish();
 			}
 			});
+			
+			
+		Button new_button2 = (Button)findViewById(R.id.Log_in);
+
+		new_button2.setOnClickListener(new OnClickListener(){
+			public void onClick(View v)
+			{
+				Intent j = new Intent (MainActivity.this,Login.class);
+				startActivity(j);
+				finish();
+			}
+		});
 		 
 		
 	}
