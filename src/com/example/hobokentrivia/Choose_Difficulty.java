@@ -30,6 +30,7 @@ import android.widget.Toast;
 		private Object music_state;
 		private ImageButton music_btn;
 		private Button btn;
+		private String username = "guest";
 		  
 		    @Override
 		    protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ import android.widget.Toast;
 		        	if(extras.containsKey("game_id")){
 		        		game_id = extras.getInt("game_id");
 		        	}
+		        	if(extras.containsKey("username")){
+					username = extras.getString("username");
+				}
 		        	if(extras.containsKey("music"))
 		        		music_state = extras.get("music");
 		        }
@@ -91,6 +95,9 @@ import android.widget.Toast;
 		    		i.putExtra("id", id);
 		    		i.putExtra("game_id", game_id);
 		    	}
+		    	if(!username.equals(null)){
+				i.putExtra("username",username);
+			}
 		    	i.putExtra("music", music_btn.getTag().toString());
 		    	startActivity(i);
 		    	finish();
