@@ -369,6 +369,20 @@
           android:fontFamily="sans-serif"
           android:text="This show the number of coins you own"
           android:textColor="#fdfbfb" />
+       
+       <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_alignLeft="@+id/timer"
+        android:layout_alignStart="@+id/timer"
+        android:layout_below="@+id/timer"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_alignEnd="@+id/textView1"
+        android:max="10"
+        android:progress="0"  />
+
 >>>>>>> Stashed changes
 
 </RelativeLayout>
