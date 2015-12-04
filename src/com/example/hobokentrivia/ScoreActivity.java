@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ScoreActivity extends Activity{
 	
@@ -31,6 +32,7 @@ public class ScoreActivity extends Activity{
 	private int score;
 	private TrackUser user;
 	private int game_id;
+	private String username = null;
 	Drawable background;
 	private ImageButton music_btn;
 	private Object music_state;
@@ -45,6 +47,9 @@ public class ScoreActivity extends Activity{
 	        Bundle extras = getIntent().getExtras(); 
 	    	score = extras.getInt("score");
 	    	ID = extras.getInt("id");
+	    	if(extras.containsKey("username")){
+			   username = extras.getString("username");
+		   }
 	    	music_state = extras.get("music");
 	    	
 	    	 //set music button as it was from previous screen
@@ -75,7 +80,8 @@ public class ScoreActivity extends Activity{
 	    	}
 	    	
 			tv2=(TextView)findViewById(R.id.textView2);
-			tv2.setText("  " + score);	
+			tv2.setText("  " + score);
+			Toast.makeText(getApplicationContext(), "Good job amigo! "+username+" ,Do you want to play it again ?", Toast.LENGTH_SHORT).show();
 									
 	    	updateUser(ID);
 	   }
@@ -96,6 +102,7 @@ public class ScoreActivity extends Activity{
 		  user = user_info.get(user_info.size() - 1);
 		  user.setScore(score);
 		  user.setTime_out(date);
+		  user.setUsername(username);
 		  game_id = user.getGameNum();
 		  Long t =  user.getTime_out().getTime() - user.getTime_in().getTime(); //milliseconds
 		  user.setTotal_time(t); //get difference in second		  
