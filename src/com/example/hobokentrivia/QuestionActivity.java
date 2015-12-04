@@ -64,6 +64,7 @@ import com.example.hobokentrivia.DBHelper;
 		private BufferedReader reader;
 		private String message;
 		private int game_id;
+		private String username = null;
 		private Object music_state;
 		private ImageButton music_btn;
 	    long tRemaining; 
@@ -101,6 +102,7 @@ import com.example.hobokentrivia.DBHelper;
 			B3=(Button)findViewById(R.id.button4);
 			B4=(Button)findViewById(R.id.button5);
 			score=(Button)findViewById(R.id.button6);
+			myProgressBar = (ProgressBar) findViewById(R.id.progressBar); // progreessBar
 			pauseGame=(Button)findViewById(R.id.button7);
 			resumeGame=(Button)findViewById(R.id.button8);
 			resumeGame.setVisibility(View.GONE);
@@ -130,6 +132,9 @@ import com.example.hobokentrivia.DBHelper;
 	             if(extras.containsKey("game_id")){
 	            	 game_id = extras.getInt("game_id");
 	             }
+	             if(extras.containsKey("username")){
+			 username = extras.getString("username");
+			}
 	             if(extras.containsKey("music"))
 	            	music_state = extras.get("music");
 	        }
@@ -525,6 +530,9 @@ import com.example.hobokentrivia.DBHelper;
 	    	i.putExtra("score", score_total);
 	    	i.putExtra("id", ID);
 	    	i.putExtra("music", music_btn.getTag().toString());
+	    	if(!username.equals(null)){
+			i.putExtra("username",username);
+		}
 	    	startActivity(i);
 	    	finish();
 
