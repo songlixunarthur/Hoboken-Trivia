@@ -13,6 +13,7 @@ public class TrackUser {
 	private Date time_in;
 	private Date time_out;
 	private Long total_time;
+	private String username;
 
 	//****************** Getters and setters*****************
 	public int getId() {
@@ -56,6 +57,14 @@ public class TrackUser {
 	}
 	public void setTotal_time(Long t) {
 		this.total_time = t;
+	}
+	public String getUsername() { 
+		return username;
+		
+	}
+	public void setUsername(String s) {
+		this.username = s;
+
 	}
 	
 
